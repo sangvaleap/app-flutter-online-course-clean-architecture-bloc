@@ -1,4 +1,4 @@
-# Online Course App - Flutter
+# Online Course App - Flutter | Clean Architecture - Bloc
 
 - Preview video: https://youtu.be/DAdxI8mrTjI
 - Support my work: https://www.patreon.com/sangvaleap
