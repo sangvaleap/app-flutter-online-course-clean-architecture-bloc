@@ -10,10 +10,3 @@ sealed class CourseEvent extends Equatable {
 class GetCourses extends CourseEvent {
   const GetCourses();
 }
-
-class FavoriteCourse extends CourseEvent {
-  const FavoriteCourse({required this.course, required this.value});
-
-  final Course course;
-  final bool value;
-}
