@@ -66,4 +66,16 @@ class CourseModel extends Course {
         description: "_empty.description",
         isFavorited: false,
       );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "name": name,
+        "image": image,
+        "price": price,
+        "duration": duration,
+        "session": session,
+        "review": review,
+        "is_favorited": isFavorited,
+        "description": description,
+    };
 }
