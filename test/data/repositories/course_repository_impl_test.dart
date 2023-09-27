@@ -15,7 +15,7 @@ void main() {
   late final MockCourseRemoteDataSource mockCourseRemoteDataSource;
   late final CourseRepositoryImpl courseRepositoryImpl;
 
-  final List<CourseModel> courseModels = [CourseModel.fromMap(courses[0])];
+  final List<CourseModel> courseModels = [CourseModel.fromMap(coursesData[0])];
 
   setUpAll(() {
     mockCourseRemoteDataSource = MockCourseRemoteDataSource();

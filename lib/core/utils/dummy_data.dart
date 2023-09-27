@@ -16,7 +16,7 @@ List categories = [
   {"name": "Finance", "icon": "assets/icons/categories/finance.svg"},
 ];
 
-List courses = [
+List coursesData = [
   {
     "id": 100,
     "name": "UI/UX Design",
@@ -136,7 +136,7 @@ List courses = [
   }
 ];
 
-List features = [
+List featuresData = [
   {
     "id": 100,
     "name": "UI/UX Design",
@@ -204,7 +204,7 @@ List features = [
   },
 ];
 
-List recommends = [
+List recommendsData = [
   {
     "id": 105,
     "name": "Painting",

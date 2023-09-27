@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_course/src/features/course/domain/entities/course.dart';
-import 'package:online_course/src/widgets/favorite_box.dart';
+import 'package:online_course/src/features/course/pesentation/bloc/favorite_course/favorite_course_bloc.dart';
 import 'package:online_course/src/theme/app_color.dart';
+import 'package:online_course/src/widgets/favorite_box_v2.dart';
 import 'package:readmore/readmore.dart';
 
 class CourseDetailInfo extends StatelessWidget {
@@ -25,10 +27,17 @@ class CourseDetailInfo extends StatelessWidget {
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
             ),
-            FavoriteBox(
-              isFavorited: course.isFavorited,
-              onChanged: (favorited) {},
-            )
+            BlocBuilder<FavoriteCourseBloc, FavoriteCourseState>(
+              builder: (context, state) {
+                return FavoriteBoxV2(
+                  isFavorited: course.isFavorited,
+                  onTap: () {
+                    BlocProvider.of<FavoriteCourseBloc>(context)
+                        .add(ToggleFavoriteCourse(course));
+                  },
+                );
+              },
+            ),
           ],
         ),
         const SizedBox(

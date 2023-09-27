@@ -31,12 +31,9 @@ class _ExploreCourseListState extends State<ExploreCourseList> {
         }
       },
       buildWhen: (previous, current) {
-        AppUtil.debugPrint('previous: $previous');
-        AppUtil.debugPrint('current: $current');
         return current is GetCourseState;
       },
       builder: (context, state) {
-        AppUtil.debugPrint("explore: $state");
         if (state is GetCoursesLoading) {
           return const CustomProgressIndicator();
         } else if (state is GetCoursesLoaded) {

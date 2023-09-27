@@ -9,12 +9,20 @@ abstract class CourseRemoteDataSource {
 }
 
 class CourseRemoteDataSourceImpl implements CourseRemoteDataSource {
+  CourseRemoteDataSourceImpl();
+
   @override
   Future<List<CourseModel>> getCourses() async {
     //==== Todo: implement the call to real api =====
     try {
       // dummy data
-      return courses.map((e) => CourseModel.fromMap(e)).toList();
+      return coursesData.map((e) => CourseModel.fromMap(e)).toList();
+
+      // final result = await http.get(Uri.parse(NetworkUrls.getCourses));
+      // if (result.statusCode == 200) {
+      //   return CourseMapper.jsonToCourseModelList(result.body);
+      // }
+      // return [];
     } catch (e) {
       throw ServerException();
     }
@@ -25,7 +33,7 @@ class CourseRemoteDataSourceImpl implements CourseRemoteDataSource {
     //==== Todo: implement the call to real api =====
     try {
       // dummy data
-      return features.map((e) => CourseModel.fromMap(e)).toList();
+      return featuresData.map((e) => CourseModel.fromMap(e)).toList();
     } catch (e) {
       throw ServerException();
     }
@@ -36,7 +44,7 @@ class CourseRemoteDataSourceImpl implements CourseRemoteDataSource {
     //==== Todo: implement the call to real api =====
     try {
       // dummy data
-      return recommends.map((e) => CourseModel.fromMap(e)).toList();
+      return recommendsData.map((e) => CourseModel.fromMap(e)).toList();
     } catch (e) {
       throw ServerException();
     }

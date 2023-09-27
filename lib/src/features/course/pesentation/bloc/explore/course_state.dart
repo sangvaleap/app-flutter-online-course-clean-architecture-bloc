@@ -22,10 +22,14 @@ class GetCoursesLoaded extends GetCourseState {
   const GetCoursesLoaded(this.courses);
 
   final List<Course> courses;
+  @override
+  List<Object> get props => [courses];
 }
 
 class GetCoursesError extends GetCourseState {
   const GetCoursesError(this.errorMessage);
 
   final String errorMessage;
+  @override
+  List<Object> get props => [errorMessage];
 }

@@ -27,7 +27,7 @@ class CourseModel extends Course {
           price: map["price"] as String,
           review: map["review"] as String,
           session: map["session"] as String,
-          isFavorited: map["is_favorited"] as bool,
+          isFavorited: false,
         );
 
   factory CourseModel.fromJson(String json) =>
@@ -77,5 +77,5 @@ class CourseModel extends Course {
         "review": review,
         "is_favorited": isFavorited,
         "description": description,
-    };
+      };
 }

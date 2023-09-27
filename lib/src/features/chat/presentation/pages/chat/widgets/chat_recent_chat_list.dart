@@ -8,7 +8,7 @@ class ChatRecentChatList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
       shrinkWrap: true,
       children: List.generate(
         chats.length,

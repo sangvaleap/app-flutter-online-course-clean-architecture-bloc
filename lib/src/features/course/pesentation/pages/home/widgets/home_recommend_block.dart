@@ -61,7 +61,6 @@ class _HomeRecommendBlcokState extends State<HomeRecommendBlcok> {
           }
         },
         builder: (context, state) {
-          AppUtil.debugPrint("recommend: $state");
           if (state is RecommendCoureInitial) {
             return const CustomProgressIndicator();
           } else if (state is RecommendCourseLoaded) {

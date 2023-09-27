@@ -5,19 +5,19 @@ import 'package:online_course/src/features/course/pesentation/pages/course_detai
 import 'package:online_course/src/features/course/pesentation/pages/course_detail/widgets/course_detail_info.dart';
 import 'package:online_course/src/features/course/pesentation/pages/course_detail/widgets/course_detail_tabbar.dart';
 import 'package:online_course/src/theme/app_color.dart';
+import 'package:online_course/src/widgets/custom_appbar.dart';
 
-// ignore: must_be_immutable
 class CourseDetailPage extends StatelessWidget {
-  CourseDetailPage({required this.course, this.isHero = false, Key? key})
+  const CourseDetailPage({required this.course, this.isHero = false, Key? key})
       : super(key: key);
-  Course course;
-  bool isHero;
+  final Course course;
+  final bool isHero;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.appBgColor,
-      appBar: _buildAppBar(),
+      appBar: const CustomAppBar(title: "Detail"),
       body: _buildBody(),
       bottomNavigationBar: CourseDetailBottomBlock(course: course),
     );
@@ -45,17 +45,6 @@ class CourseDetailPage extends StatelessWidget {
           const Divider(),
           const CourseDetailTabBar()
         ],
-      ),
-    );
-  }
-
-  AppBar _buildAppBar() {
-    return AppBar(
-      iconTheme: const IconThemeData(color: AppColor.darker),
-      backgroundColor: AppColor.appBarColor,
-      title: const Text(
-        "Detail",
-        style: TextStyle(color: AppColor.textColor),
       ),
     );
   }

@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_course/core/utils/app_navigate.dart';
-import 'package:online_course/core/utils/app_util.dart';
 import 'package:online_course/src/features/course/domain/entities/course.dart';
 import 'package:online_course/src/features/course/pesentation/bloc/feature/feature_course_bloc.dart';
 import 'package:online_course/src/features/course/pesentation/pages/course_detail/course_detail.dart';
@@ -42,7 +41,6 @@ class _HomeFeatureBlockState extends State<HomeFeatureBlock> {
         ),
         BlocBuilder<FeatureCourseBloc, FeatureCourseState>(
           builder: (context, state) {
-            AppUtil.debugPrint('feature: $state');
             if (state is FeatureCourseLoading) {
               return const CustomProgressIndicator();
             } else if (state is FeatureCourseLoaded) {

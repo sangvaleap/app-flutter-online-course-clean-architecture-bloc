@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_course/core/utils/app_util.dart';
 import 'package:online_course/src/features/course/domain/entities/course.dart';
+import 'package:online_course/src/features/course/pesentation/bloc/favorite_course/favorite_course_bloc.dart';
 import 'package:online_course/src/theme/app_color.dart';
-
-import '../../../../../../widgets/custom_image.dart';
-import '../../../../../../widgets/favorite_box.dart';
+import 'package:online_course/src/widgets/custom_image.dart';
+import 'package:online_course/src/widgets/favorite_box_v2.dart';
 
 class CourseItem extends StatelessWidget {
   const CourseItem(
@@ -45,10 +47,7 @@ class CourseItem extends StatelessWidget {
             Positioned(
               top: 170,
               right: 15,
-              child: FavoriteBox(
-                isFavorited: course.isFavorited,
-                onChanged: (favorited) {},
-              ),
+              child: _buildFavoriteButton(),
             ),
             Positioned(
               top: 210,
@@ -57,6 +56,30 @@ class CourseItem extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildFavoriteButton() {
+    return BlocConsumer<FavoriteCourseBloc, FavoriteCourseState>(
+      listener: (context, state) {
+        if (state is FavoiriteCourseError) {
+          AppUtil.showSnackbar(
+              context: context, message: "Something went wrong.");
+        }
+      },
+      buildWhen: (previous, current) {
+        return current is FavoiriteCourseLoaded &&
+            current.course.id == course.id;
+      },
+      builder: (context, state) {
+        return FavoriteBoxV2(
+          isFavorited: course.isFavorited,
+          onTap: () {
+            BlocProvider.of<FavoriteCourseBloc>(context)
+                .add(ToggleFavoriteCourse(course));
+          },
+        );
+      },
     );
   }
 
